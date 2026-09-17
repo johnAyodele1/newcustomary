@@ -25,12 +25,20 @@ export async function createOrder(input: CreateOrderInput, priced: PricedItem[],
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`,
         [result.rows[0].id, item.productId, item.variantId, item.colorId, item.engraving, item.quantity, item.unitPrice, item.lineTotal],
       );
-      await client.query('UPDATE products SET stock = stock - $1 WHERE id = $2', [item.quantity, item.productId]);
+      const stockUpdate = await client.query(
+        'UPDATE products SET stock = stock - $1 WHERE id = $2 AND stock >= $1',
+        [item.quantity, item.productId],
+      );
+      if (stockUpdate.rowCount !== 1) throw new Error('One selected product does not have enough stock.');
     }
     await client.query('COMMIT');
     return { id: result.rows[0].id, reference, total, items: priced.length, currency: 'NGN' };
-  } catch (error) { await client.query('ROLLBACK'); throw error; }
-  finally { client.release(); }
+  } catch (error) {
+    await client.query('ROLLBACK');
+    throw error;
+  } finally {
+    client.release();
+  }
 }
 
 export async function markPayment(reference: string, status: 'paid' | 'failed') {

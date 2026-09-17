@@ -4,7 +4,7 @@ import { initializePaymentSchema, verifyPaymentSchema } from './payments.schemas
 
 export async function initializePaymentController(request: Request, response: Response) {
   const input = initializePaymentSchema.parse(request.body);
-  return response.json(await initializePayment(input));
+  return response.json(await initializePayment(input.reference));
 }
 
 export async function verifyPaymentController(request: Request, response: Response) {
