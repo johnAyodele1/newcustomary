@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --color-ink: #1A1A1A;
+  --color-ink-soft: #4A4A4A;
+  --color-paper: #FFFFFF;
+  --color-paper-warm: #FAF8F5;
+  --color-gilt: #C9A96E;
+  --color-gilt-deep: #A88748;
+  --color-gilt-whisper: #F4EEE3;
+  --color-border-hairline: rgba(26, 26, 26, 0.08);
+  --color-error: #8C3B2E;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --text-hero: clamp(2.75rem, 5vw + 1rem, 4.5rem);
+  --text-h1: clamp(2rem, 3vw + 1rem, 3rem);
+  --text-h2: clamp(1.5rem, 2vw + 0.5rem, 2rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-price: 1.125rem;
+  --leading-display: 1.1;
+  --leading-body: 1.6;
+  --tracking-label: 0.08em;
+  --space-1: 0.5rem; --space-2: 1rem; --space-3: 1.5rem; --space-4: 2rem;
+  --space-6: 3rem; --space-8: 4rem; --space-12: 6rem; --space-16: 8rem;
+  --space-section-mobile: 4rem;
+  --ease-quiet: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 150ms; --duration-base: 300ms; --duration-slow: 500ms;
+  --shadow-card: 0 1px 2px rgba(26,26,26,0.04), 0 8px 24px rgba(26,26,26,0.06);
+  --shadow-card-hover: 0 2px 4px rgba(26,26,26,0.06), 0 16px 32px rgba(26,26,26,0.09);
+  --shadow-modal: 0 24px 64px rgba(26,26,26,0.18);
+  --radius-card: 4px; --radius-button: 2px; --radius-modal: 8px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--color-ink);
+  background: var(--color-paper);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+}
+button, input, textarea { font: inherit; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+:focus-visible { outline: 2px solid var(--color-gilt-deep); outline-offset: 3px; }
